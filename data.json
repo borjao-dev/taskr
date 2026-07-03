@@ -1,0 +1,2510 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "ad43d067",
+      "title": "CIDADE",
+      "checked": false,
+      "children": [
+        {
+          "id": "1eba912f",
+          "title": "Reservatório limpador para-brisa gol 94",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "0104b18f",
+          "title": "Devolver roteador correio",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "bb6f2ff5",
+          "title": "Lentilha 250g",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "a851e280",
+          "title": "Feijão vermelho 1kg",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "4f98d2bf",
+          "title": "2 Pão integral wickbold (chia e macadâmia ou castanha do Pará e quinoa)",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "695c4177",
+          "title": "Limpador para-brisa gol 94",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "3a6e7dbc",
+          "title": "Broca videa 16mm+ X 250mm+",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "7cc3188c",
+          "title": "Botão descarga",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "90bc6943",
+          "title": "Tampa privada",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "e3a2c87f",
+          "title": "Reparo descarga",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "2011a363",
+      "title": "Cozinha",
+      "checked": false,
+      "children": [
+        {
+          "id": "f8cc4204",
+          "title": "Filtro de água",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "ab1cf924",
+          "title": "Garfo grande silicone",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "ca23f5d0",
+          "title": "Tigela de vidro hermética (para salada)",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "f1fedbd4",
+          "title": "Pote vidro temperos",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "07686e71",
+          "title": "Pegador silicone",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "92d2a779",
+          "title": "Refratário Airfryer",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "0586ed25",
+          "title": "MOEDOR DE PIMENTA",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "3067ca6c",
+          "title": "Spray tinta branca metal",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "392fd979",
+          "title": "Dispenser de detergente",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "2c77ed87",
+      "title": "Ferramentas",
+      "checked": false,
+      "children": [
+        {
+          "id": "f8067df4",
+          "title": "Lanterna tática recarregável",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "11ea228a",
+          "title": "Caixa de ferramentas com rodinhas (>50L)",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "4f6d5ffd",
+          "title": "Esquadro rápido 7 polegadas magnético",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "81a4b3d1",
+          "title": "Multímetro",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "a7412cce",
+          "title": "Alicate decapador",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "e8bc1d8d",
+          "title": "Alicate bomba d'água",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "7f0e1c73",
+          "title": "Torquímetro estalo 5 a 60 NM",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2ed7ddd2",
+          "title": "Esmalte",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "9c2a38f5",
+          "title": "WD-40 óleo",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "07b20410",
+          "title": "Presilhas plásticas pretas",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "4f1c981e",
+          "title": "Lixa metal",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "0887ae9d",
+      "title": "MOTO",
+      "checked": false,
+      "children": [
+        {
+          "id": "5f1488df",
+          "title": "Primeira revisão",
+          "checked": true,
+          "children": [
+            {
+              "id": "7bfff766",
+              "title": "Suporte celular impermeável",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "8e050623",
+              "title": "Bloqueador antifurto magnético",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "f6d27f26",
+              "title": "Antena corta pipa",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "4f1205aa",
+              "title": "Tomada carregador USB",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "c514333f",
+              "title": "Regular embreagem",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "2af669a8",
+              "title": "Regular válvulas",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "8116eecd",
+              "title": "Trocar vela (está com irídio)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "463d3c32",
+              "title": "Trocar Filtro de ar",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "9ed570ae",
+              "title": "4 aranhas",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "f5a1f20d",
+              "title": "Passar scanner",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "d5200573",
+              "title": "Limpeza do bico injetor e sonda lambda",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "f869c239",
+              "title": "Verificar bateria e parte elétrica",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "42f8274b",
+              "title": "Limpeza completa",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "64c37be5",
+              "title": "Verificar aperto de todos os parafusos com torquímetro",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "4959214c",
+              "title": "Alinhamento e balanceamento de rodas",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "eafe61fb",
+              "title": "Vacina antifuro nos dois pneus",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "eb74441b",
+              "title": "Ajustar guidão e manoplas",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "49e7c638",
+              "title": "Verificar kit transmissão",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "f355e781",
+              "title": "Verificar suspensões",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "32d5eb4e",
+              "title": "Chaveiro com engate rápido",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "ef6f0562",
+              "title": "Instalar trava de coroa",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "b5c8e8be",
+              "title": "Tela de banco (capa térmica)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "1bd63b6c",
+              "title": "Trocar fluido de freio (DOT 4)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "fc427a67",
+              "title": "Trocar óleo (semi sintético 10w40) e filtro",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "97fd3135",
+              "title": "Atenção especial ao freio traseiro (trocar disco se necessário)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "d7e18b01",
+          "title": "Querosene",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "58ccc2da",
+          "title": "Vitrificador para acrílico",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2a027358",
+          "title": "Limpa-contato spray",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "26c6ab16",
+          "title": "Fita adesiva refletiva",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "129a504a",
+      "title": "Médico",
+      "checked": false,
+      "children": [
+        {
+          "id": "410a30f7",
+          "title": "Vasectomia",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "e20020dc",
+          "title": "Alergia",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "81142a33",
+          "title": "Ansiedade",
+          "checked": true,
+          "children": [
+            {
+              "id": "8af917f1",
+              "title": "Venvanse",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "38676bac",
+              "title": "Bupropiona",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "9064980d",
+              "title": "Oxalato de Escitalopram 10mg",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "6f71aa25",
+          "title": "Pulso",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "01ec5592",
+          "title": "Colesterol",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "5fbfdcb9",
+      "title": "Dalgiza",
+      "checked": false,
+      "children": [
+        {
+          "id": "88a9606a",
+          "title": "Prateleiras, mão francesa, parafusos e buchas",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2a8acc7d",
+          "title": "Armário ou gaveteiros 45x115x180",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "5188dce9",
+          "title": "Cuidadora de idosos",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "72ab25ee",
+          "title": "Enviar calculadora e mini máquina de costura",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "3032b24d",
+          "title": "2x barbeador elétrico",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2b06c7d2",
+          "title": "Eletricista credenciado",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "3b4febcd",
+          "title": "Cadeira de rodas 65cm largura máxima",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "cd1ba3ff",
+          "title": "Barras de apoio inox 100 e 80cm",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "5f52077f",
+          "title": "Termômetro laser",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "fc56bfb7",
+          "title": "Ducha higiênica aquecida",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "85b0df04",
+          "title": "Timer de cozinha",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "77597c20",
+          "title": "Fraldão para obeso mórbido 120",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "c844b40c",
+          "title": "Borrifador pressão",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "c4595165",
+          "title": "Amolador facas",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "5a5312a8",
+          "title": "Faca do chef Tramontina",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "571ea1ff",
+          "title": "chaleira elétrica plástico",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "a50391d1",
+      "title": "Viagem",
+      "checked": false,
+      "children": [
+        {
+          "id": "462ca904",
+          "title": "VIAGENS LONGAS",
+          "checked": false,
+          "children": [
+            {
+              "id": "76b3cc7f",
+              "title": "Verificar",
+              "checked": false,
+              "children": [
+                {
+                  "id": "b2075147",
+                  "title": "Pressão e integridade dos pneus",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "c54fe10f",
+                  "title": "Nível de óleo do motor",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "9c2c9284",
+                  "title": "Lubrificação, desgaste e tensão da corrente",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "7db13da8",
+                  "title": "Freios (inclusive nível de fluido)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "3d237afb",
+                  "title": "Placa (se está firme e visível)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "5fd394a4",
+                  "title": "Lanternas (baixa com farol e alta com os dois freios)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "c9c0a9d7",
+                  "title": "Piscas (esq/dir, frente e trás)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "2ac2c62e",
+                  "title": "Faróis (alto, baixo e lampejador)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                }
+              ],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "865581f9",
+              "title": "Opcionais",
+              "checked": false,
+              "children": [
+                {
+                  "id": "8d74999c",
+                  "title": "Limpar o AP e desligar tudo (exceto geladeira)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "7bfb0642",
+                  "title": "Power bank (bateria extra)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "25633812",
+                  "title": "Carregador de celular (melhor levar, apesar de já ter na moto)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "b32c8270",
+                  "title": "Repelente mosquito (parede e/ou corpo)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                }
+              ],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "9e534988",
+              "title": "Essenciais",
+              "checked": false,
+              "children": [
+                {
+                  "id": "8fc5ebbc",
+                  "title": "CHAVES de casa e do veículo (com ímãs neodímio)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "fea1755f",
+                  "title": "Óculos de grau (com Transition)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "80c6afa7",
+                  "title": "Documentos (CNH e Registro/licenciamento do veículo - verificar validade também)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "4446b513",
+                  "title": "Dinheiro extra (trocados para os PEDÁGIOS!!), separado em várias partes",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "c10713ae",
+                  "title": "Separar dinheiro na conta do cartão de débito",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                }
+              ],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "d1d2d3ed",
+              "title": "Pessoal",
+              "checked": false,
+              "children": [
+                {
+                  "id": "74a557b5",
+                  "title": "REMÉDIOS!!! Ansiedade, gripe e dor de cabeça/corpo",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "c4d366f6",
+                  "title": "Cortar cabelo, fazer barba, limpar ouvidos, nariz, garganta, etc., no dia anterior",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "11d0f3d9",
+                  "title": "Segunda-pele (4 jaquetas e balaclavas pelo menos)",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "acaca917",
+                  "title": "Chinelos e Tênis",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "13f66642",
+                  "title": "4 camisetas, calças, cuecas e pares de meia",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "b5b1d782",
+                  "title": "Galão 5l e duas garrafinhas térmicas de ÁGUA!!!",
+                  "checked": false,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "c837e7b2",
+                  "title": "Fones e tampões de ouvido",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "2d8d666b",
+                  "title": "Jaqueta moletom e forro interno da jaqueta de inverno (dependendo da época)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "bff9bb0a",
+                  "title": "Escova de dentes, creme dental, shampoo, sabonete, desodorante, talco de pés, barbeador",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "96e9b6fe",
+                  "title": "Lenços umedecidos",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "6f751a0a",
+                  "title": "PAPEL HIGIÊNICO (2 rolos)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                }
+              ],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "6f8ddbad",
+              "title": "Segurança",
+              "checked": true,
+              "children": [
+                {
+                  "id": "1343e0b3",
+                  "title": "Bavete (veda-queixo capacete - opcional)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "3a496a9a",
+                  "title": "Capa e calça de CHUVA",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "cb983e53",
+                  "title": "Protetor de coluna (rígido) - conferir que já está na jaqueta",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "1c94309d",
+                  "title": "Jaqueta com proteções (ombros, cotovelos, costas)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "f2d2c231",
+                  "title": "Luvas verão e inverno",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "3f55c23b",
+                  "title": "Pescoceira e antena anti-pipa",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "2624c171",
+                  "title": "Capacete INTEIRIÇO",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                }
+              ],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "153597da",
+              "title": "Mecânica",
+              "checked": true,
+              "children": [
+                {
+                  "id": "8535a5fb",
+                  "title": "Bomba de encher pneu",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "77e45381",
+                  "title": "Canivete Leatherman e de chaves allen (bike)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "932cc5c2",
+                  "title": "Anti-embaçante, anti-chuva, detergente neutro e pano de microfibra (para viseira e espelhos)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "1ed0bcc0",
+                  "title": "Par de câmaras de ar (dianteira e traseira)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "e903e22e",
+                  "title": "Caneta BIC 4 cores e bloquinho",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "d929b8ae",
+                  "title": "Isqueiro BIC Maxi (conferir carga)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "f8b716e7",
+                  "title": "Fita Isolante e Abraçadeiras plásticas (zip-tie)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "01e96b63",
+                  "title": "WD-40 (mini)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "9e0dd9c2",
+                  "title": "Óleo (motor e corrente)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                },
+                {
+                  "id": "4c9df17f",
+                  "title": "Galão extra de gasolina 5l (proibido!)",
+                  "checked": true,
+                  "children": [],
+                  "priority": null,
+                  "due": null
+                }
+              ],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "1a25d2ba",
+          "title": "Para Arena Jaraguá do Sul",
+          "checked": true,
+          "children": [
+            {
+              "id": "3ce90455",
+              "title": "Inspecionar corrente e combustível quando voltar",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "b5f76314",
+              "title": "Bolsa com a caixa de 6 exemplares do meu livro Xadrez Vital",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "787eb0c9",
+              "title": "Leve ÁGUA!",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "d21fadaf",
+              "title": "Testar parte elétrica (piscas, farol, lanterna)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "0b27b6e1",
+              "title": "Verificar nível de óleo",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "c5f8a366",
+              "title": "Limpar a viseira do capacete e retrovisores",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "eac7cc7b",
+              "title": "Escovar os dentes",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "21566882",
+              "title": "Limpar nariz e ouvidos",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "77739145",
+              "title": "Faça um alongamento",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "011653fb",
+              "title": "Levar calça de chuva",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "1dd8075c",
+              "title": "Calibrar pneus (22 dianteiro e 26 traseiro)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "249fa0de",
+          "title": "Para Mar do Norte",
+          "checked": true,
+          "children": [
+            {
+              "id": "542c497b",
+              "title": "VOLTAR com as aulas de xadrez",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "b170a23c",
+              "title": "2x poncho bike!!",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "e223053b",
+              "title": "Médico (alergia, vasectomia, pulso, colesterol, ansiedade)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "f758a610",
+              "title": "Atualizar CNH",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "d21811f9",
+              "title": "Remédios",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "81429976",
+              "title": "Cortar cabelo",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "3acff0e1",
+              "title": "Recolher roupa varal",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "16e08c1b",
+              "title": "Parafusadeira/Furadeira",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "eeda8cf8",
+              "title": "MOCHILA e REMÉDIOS do escritório!",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "82bd55a3",
+              "title": "Livros",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "481c7fa1",
+              "title": "Fechar todas as janelas completamente",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "2764e9a1",
+              "title": "Desligar tudo da tomada, fechar o gás e deixar a geladeira no nível mínimo",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a92ce4b5",
+              "title": "Recolher lixos e limpar o ap",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "037a5207",
+              "title": "Teclado/mouse + carregador",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "fceeab68",
+              "title": "Passagens",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "392e5ff3",
+              "title": "Chinelo",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "29fef93c",
+              "title": "Desodorante",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "039f7b36",
+              "title": "Garrafa de água",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "6a215011",
+              "title": "Bonés",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "88497b20",
+              "title": "Separar dinheiro",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "47070d48",
+              "title": "Carteira, Documentos, chaves",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "327c6f6b",
+              "title": "Óculos + estojo",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "5ca2670c",
+              "title": "Tampões de ouvido + estojo",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a9120071",
+              "title": "Roupas: Meias, cuecas, bermudas/calcas, camisetas, jaquetas",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "936fa194",
+              "title": "Escova + creme dental",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a6c7b435",
+              "title": "Notebook + carregador",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "cc166c5c",
+              "title": "Barbeador + carregador",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "49918d43",
+              "title": "Celular + carregador + fones",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a91ef254",
+              "title": "Deixar contas pagas (principalmente celular)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "b88c244a",
+      "title": "Contas",
+      "checked": false,
+      "children": [
+        {
+          "id": "e909daab",
+          "title": "Mensais",
+          "checked": false,
+          "children": [
+            {
+              "id": "d79a7094",
+              "title": "Limpar filtros do ar condicionado",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "37b32298",
+              "title": "MEI (R$87,05)",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "1b9b2839",
+              "title": "Auto-dízimo",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "70b5c11f",
+              "title": "Telefone (R$35,00)",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "ac09e4da",
+              "title": "Internet (R$109,90)",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "24d3b0c3",
+              "title": "Aluguel/água (R$950,00 + luz)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "099a8fdc",
+              "title": "Cartão de crédito",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "8d72b3e8",
+          "title": "ANUAIS",
+          "checked": false,
+          "children": [
+            {
+              "id": "8f571d67",
+              "title": "GitHub Copilot (venc. 29 agosto)",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "36617d82",
+              "title": "Seguro moto (venc. 08 Outubro)",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "aef1954d",
+              "title": "Trocar vela do filtro de água (Jan e junho)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "6c764492",
+              "title": "Albendazol (vermífugo dose única)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "06256958",
+              "title": "MEGA Pro (venc. 6 janeiro)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "6246d4e9",
+              "title": "Chess.com (venc. 6 janeiro)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "cf130f6f",
+              "title": "IPVA moto (venc. 31 agosto)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "3ce40c2f",
+              "title": "Licenciamento moto (venc. 31 outubro)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "bf49341e",
+      "title": "Mercado",
+      "checked": false,
+      "children": [
+        {
+          "id": "dd77d757",
+          "title": "Temperos",
+          "checked": false,
+          "children": [
+            {
+              "id": "7d7d67b9",
+              "title": "Lemon pepper",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "6d186a26",
+              "title": "Manjericão",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a1709091",
+              "title": "Azeite de oliva extra virgem",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "9c90d0d8",
+              "title": "Pimenta calabresa desidratada em pó ou flocos",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "24cf736c",
+              "title": "Curry",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "204977c4",
+              "title": "Alho/cebola/salsa Kitano 40g",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "28b90246",
+              "title": "Orégano",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "613f8e4b",
+              "title": "Páprica doce",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "12e7ef6b",
+              "title": "Tempero Sazon para arroz",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "b89cd22d",
+              "title": "Molho inglês",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "82a65c1c",
+              "title": "Molho shoyu",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "31f73a21",
+          "title": "Almoço",
+          "checked": false,
+          "children": [
+            {
+              "id": "68a00999",
+              "title": "Ovos",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "1cc8513f",
+              "title": "Linguiça de frango",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "56e01bbc",
+              "title": "Filé de peixe (Merluza ou Tilápia)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "0dada8df",
+              "title": "Frango assado",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a981b1d8",
+              "title": "Pimentão",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "fbe5c960",
+              "title": "Cebola",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "0b4eb1ff",
+              "title": "Tomate",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "11c8fe9d",
+              "title": "Arroz",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "abba7dd3",
+          "title": "Limpeza",
+          "checked": false,
+          "children": [
+            {
+              "id": "af705457",
+              "title": "Inseticida spray",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "658b0306",
+              "title": "Sacola de lixo 100 Litros",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "f63bc0e5",
+              "title": "Mata-baratas",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "1a6b0399",
+              "title": "Amaciante de roupa",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "6e00f9c5",
+              "title": "Lava-roupas líquido de côco",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "4155aed8",
+              "title": "Desinfetante (jasmim é o melhor)",
+              "checked": false,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "34678309",
+              "title": "Esponja de louça",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a4236b16",
+              "title": "Açúcar",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "6d993bf2",
+              "title": "Pano microfibra",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "8a881cac",
+              "title": "Vinagre de álcool",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "ee38e712",
+              "title": "Refil inseticida parede",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "611bba41",
+              "title": "Borrifador",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "b2ba9a87",
+              "title": "Esfregão",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "92d52b1f",
+              "title": "Pato purifique",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "c539cb24",
+              "title": "Veja multiuso",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "67d67243",
+              "title": "Detergente de louça",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "dfc3b534",
+              "title": "Hipoclorito",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "ecad5683",
+          "title": "Café",
+          "checked": true,
+          "children": [
+            {
+              "id": "28efd4ca",
+              "title": "Adoçante",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "b7417c89",
+              "title": "Essência de baunilha",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "e7c8a876",
+              "title": "Café instantâneo",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "8167bddf",
+              "title": "Leite em pó",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "75f3f7de",
+          "title": "Higiene",
+          "checked": true,
+          "children": [
+            {
+              "id": "16e94fb3",
+              "title": "Shampoo (pequeno)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "d9751640",
+              "title": "Enxaguante bucal",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "f921988d",
+              "title": "Fio dental",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "1fd348cb",
+              "title": "Papel toalha",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "8124fda9",
+              "title": "Papel higiênico",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "1db57117",
+              "title": "Talco pés",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "da8914b1",
+              "title": "Desodorante",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "de7f9eef",
+              "title": "Barbeador",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "29e4f52c",
+              "title": "Escova de dentes",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "a3624cea",
+              "title": "Creme dental",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "53b12e45",
+              "title": "Sabonete",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "e79b2272",
+              "title": "Shampoo (grande)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "134f6c46",
+          "title": "Macarronada",
+          "checked": true,
+          "children": [
+            {
+              "id": "adacfad4",
+              "title": "Miojo (engradado)",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "9de90129",
+              "title": "Queijo ralado",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "e01815e3",
+              "title": "Ovos",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "221e8d19",
+              "title": "Macarrão",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "dfc8ce09",
+              "title": "Molho de tomate bolonhesa",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "a5e6d1a5",
+          "title": "Vitamina",
+          "checked": true,
+          "children": [
+            {
+              "id": "994d8b06",
+              "title": "Aveia",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "5282cffa",
+              "title": "Maçã",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "78497758",
+              "title": "Laranja/tangerina",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            },
+            {
+              "id": "51ee8fc4",
+              "title": "Banana",
+              "checked": true,
+              "children": [],
+              "priority": null,
+              "due": null
+            }
+          ],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "2d811fa0",
+      "title": "Casa",
+      "checked": false,
+      "children": [
+        {
+          "id": "dedba6c6",
+          "title": "Travesseirão em \"U\"",
+          "checked": false,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2011b0a3",
+          "title": "Tinta spray preto brilhante plástico intempéries",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2bfcb18c",
+          "title": "Espuma bloqueadora de insetos rodapé porta",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "75860399",
+          "title": "Protetor de colchão impermeável",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "cade6845",
+          "title": "Caneta prata tecido a prova de água",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "272e5667",
+          "title": "Protetor travesseiro impermeável",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "0c64fe86",
+          "title": "Fita adesiva para pacotes",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "7c20a70a",
+          "title": "Lençois",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "41daebf3",
+          "title": "Fronhas",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "a91ce01a",
+          "title": "Travesseiros",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "b466689a",
+      "title": "Papelaria",
+      "checked": true,
+      "children": [
+        {
+          "id": "d57ccd91",
+          "title": "Lapiseira Uni Kuru Toga Advance 0.5",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2ad11993",
+          "title": "Lapiseira FaberCastel",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "613c5521",
+          "title": "Lapiseiras Pilot Acroball 0.5",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "315089a5",
+          "title": "Canetas Pilot Acroball M 1.0",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "725d5be7",
+          "title": "Bloquinho de notas",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "7ab9b10f",
+          "title": "Stencil pequeno",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "f979860f",
+      "title": "Armarinho",
+      "checked": true,
+      "children": [
+        {
+          "id": "df1d84bb",
+          "title": "Caseador de botão",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "2f1bc601",
+          "title": "Bobinas para a parte inferior",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "cc77bc23",
+          "title": "Kit de calcadores para costuras variadas",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "c4159fed",
+          "title": "Agulhas pra máquina",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "ef3f4e12",
+          "title": "Velcros",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "44916fd1",
+          "title": "Zippers",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "1ad40a63",
+          "title": "Tesoura (mini e grande)",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "f1c594b4",
+          "title": "Linhas",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    },
+    {
+      "id": "01de7273",
+      "title": "Farmácia",
+      "checked": true,
+      "children": [
+        {
+          "id": "c185386a",
+          "title": "Listerine 14 roxo",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "063aff55",
+          "title": "Lenços umedecidos",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "03fb86eb",
+          "title": "ENO laranja",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "e1d1e31e",
+          "title": "Benegripe/Apracur duo",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "64cf78df",
+          "title": "Desodorante AXE URBAN",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "0e7e3dd9",
+          "title": "Elixir paregórico",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "26dc9cd1",
+          "title": "Bolsa e soro pra limpeza nasal",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "e67af4e6",
+          "title": "Tropinal",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        },
+        {
+          "id": "8a73c749",
+          "title": "Água oxigenada 10 volumes",
+          "checked": true,
+          "children": [],
+          "priority": null,
+          "due": null
+        }
+      ],
+      "priority": null,
+      "due": null
+    }
+  ]
+}

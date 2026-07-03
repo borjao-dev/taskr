@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listas</title>
+<style>
+  :root{
+    --bg: #0f1210;
+    --bg-panel: #161b18;
+    --bg-hover: #1d2320;
+    --border: #2a322d;
+    --text: #d8ddd6;
+    --text-dim: #7d8a80;
+    --text-faint: #4d564f;
+    --accent: #7fb88a;
+    --mono: 'JetBrains Mono', 'Fira Code', ui-monospace, 'SF Mono', Consolas, monospace;
+
+    --p-none: transparent;
+    --p-low: #4a6d8c;
+    --p-med: #c9a227;
+    --p-high: #c9702f;
+    --p-urgent: #c94f4f;
+
+    --radius: 6px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: var(--mono);
+    font-size:14px;
+    line-height:1.5;
+    min-height:100vh;
+    padding-bottom:80px;
+  }
+  a{color:var(--accent);}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    padding:14px 16px 10px;
+  }
+  .brand{
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    margin-bottom:10px;
+  }
+  .brand h1{
+    font-size:15px; font-weight:600; letter-spacing:0.5px; margin:0;
+    color:var(--text); text-transform:uppercase;
+  }
+  .brand h1 .dot{color:var(--accent);}
+  .sync-status{
+    font-size:11px; color:var(--text-faint); display:flex; align-items:center; gap:6px;
+    cursor:pointer; user-select:none;
+  }
+  .sync-dot{width:6px;height:6px;border-radius:50%;background:var(--text-faint);}
+  .sync-dot.ok{background:var(--accent);}
+  .sync-dot.err{background:var(--p-urgent);}
+  .sync-dot.busy{background:var(--p-med); animation:pulse 1s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+  .toolbar{
+    display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+  }
+  input[type=text], select{
+    background:var(--bg-panel); border:1px solid var(--border); color:var(--text);
+    font-family:var(--mono); font-size:13px; padding:7px 10px; border-radius:var(--radius);
+    outline:none;
+  }
+  input[type=text]:focus, select:focus{border-color:var(--accent);}
+  #searchBox{flex:1; min-width:140px;}
+  .btn{
+    background:var(--bg-panel); border:1px solid var(--border); color:var(--text-dim);
+    font-family:var(--mono); font-size:12px; padding:7px 11px; border-radius:var(--radius);
+    cursor:pointer; white-space:nowrap;
+  }
+  .btn:hover{background:var(--bg-hover); color:var(--text);}
+  .btn.primary{color:var(--accent); border-color:var(--accent);}
+  .btn.active{background:var(--accent); color:#0f1210; border-color:var(--accent); font-weight:600;}
+
+  main{padding:14px 16px; max-width:800px; margin:0 auto;}
+
+  .section{
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    margin-bottom:10px;
+    overflow:hidden;
+  }
+  .section-header{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 12px;
+    cursor:pointer;
+  }
+  .section-header:hover{background:var(--bg-hover);}
+  .collapse-arrow{
+    color:var(--text-faint); font-size:10px; width:10px; flex-shrink:0;
+    transition:transform 0.15s;
+  }
+  .collapse-arrow.open{transform:rotate(90deg);}
+  .section-title{
+    flex:1; font-weight:600; font-size:13.5px;
+    text-decoration:none;
+  }
+  .section-title.done{color:var(--text-faint); text-decoration:line-through;}
+  .progress-wrap{display:flex; align-items:center; gap:8px; flex-shrink:0;}
+  .progress-text{font-size:11px; color:var(--text-faint);}
+  .progress-bar{width:56px; height:4px; background:var(--border); border-radius:2px; overflow:hidden;}
+  .progress-fill{height:100%; background:var(--accent); transition:width 0.2s;}
+
+  .section-body{padding:2px 8px 8px;}
+  .section-body.collapsed{display:none;}
+
+  .item-row{
+    display:flex; align-items:flex-start; gap:8px;
+    padding:5px 6px 5px 4px;
+    border-radius:4px;
+    position:relative;
+  }
+  .item-row:hover{background:var(--bg-hover);}
+  .item-row.dragover{outline:1px dashed var(--accent);}
+
+  .indent{flex-shrink:0;}
+
+  .prio-bar{
+    width:3px; align-self:stretch; border-radius:2px; flex-shrink:0; margin-top:2px; margin-bottom:2px;
+  }
+
+  .checkbox{
+    width:15px; height:15px; margin-top:2px; flex-shrink:0;
+    accent-color:var(--accent); cursor:pointer;
+  }
+
+  .item-main{flex:1; min-width:0;}
+  .item-title-row{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
+  .item-title{
+    font-size:13.5px; cursor:text; word-break:break-word;
+  }
+  .item-title.done{color:var(--text-faint); text-decoration:line-through;}
+  .item-title[contenteditable=true]{outline:1px solid var(--accent); border-radius:3px; padding:0 3px; background:var(--bg);}
+
+  .item-meta{display:flex; gap:6px; align-items:center; margin-top:2px;}
+  .due-badge{
+    font-size:10px; padding:1px 6px; border-radius:3px; border:1px solid var(--border); color:var(--text-faint);
+  }
+  .due-badge.overdue{color:var(--p-urgent); border-color:var(--p-urgent);}
+  .due-badge.soon{color:var(--p-med); border-color:var(--p-med);}
+
+  .item-actions{
+    display:flex; gap:2px; opacity:0; flex-shrink:0; transition:opacity 0.1s;
+  }
+  .item-row:hover .item-actions{opacity:1;}
+  .icon-btn{
+    background:none; border:none; color:var(--text-faint); cursor:pointer;
+    font-size:13px; padding:3px 5px; border-radius:3px; line-height:1;
+  }
+  .icon-btn:hover{color:var(--text); background:var(--bg-panel);}
+  .icon-btn.danger:hover{color:var(--p-urgent);}
+
+  .prio-select{
+    background:none; border:1px solid var(--border); color:var(--text-faint);
+    font-family:var(--mono); font-size:10px; padding:2px 4px; border-radius:3px; cursor:pointer;
+  }
+
+  .add-child-row{padding:4px 6px 4px 4px;}
+  .add-child-input{
+    background:none; border:1px dashed var(--border); color:var(--text-dim);
+    font-family:var(--mono); font-size:12.5px; padding:5px 8px; border-radius:4px;
+    width:100%; outline:none;
+  }
+  .add-child-input:focus{border-color:var(--accent); border-style:solid; color:var(--text);}
+  .add-child-input::placeholder{color:var(--text-faint);}
+
+  .empty-state{
+    text-align:center; padding:60px 20px; color:var(--text-faint);
+  }
+  .empty-state .big{font-size:28px; margin-bottom:8px;}
+
+  footer.addbar{
+    position:fixed; bottom:0; left:0; right:0;
+    background:var(--bg); border-top:1px solid var(--border);
+    padding:10px 16px; display:flex; gap:8px; z-index:20;
+  }
+  footer.addbar input{flex:1;}
+
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:100;
+    display:flex; align-items:center; justify-content:center; padding:20px;
+  }
+  .modal{
+    background:var(--bg-panel); border:1px solid var(--border); border-radius:8px;
+    padding:20px; max-width:420px; width:100%;
+  }
+  .modal h2{font-size:14px; margin:0 0 12px; color:var(--text); text-transform:uppercase; letter-spacing:0.5px;}
+  .modal p{font-size:12.5px; color:var(--text-dim); margin:0 0 12px; line-height:1.6;}
+  .modal input{width:100%; margin-bottom:10px;}
+  .modal-actions{display:flex; gap:8px; justify-content:flex-end; margin-top:14px;}
+  .modal code{background:var(--bg); padding:1px 5px; border-radius:3px; font-size:11.5px;}
+  .modal a{font-size:12.5px;}
+
+  ::-webkit-scrollbar{width:8px; height:8px;}
+  ::-webkit-scrollbar-thumb{background:var(--border); border-radius:4px;}
+
+  @media (max-width:480px){
+    body{font-size:13px;}
+    main{padding:10px 8px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>Listas<span class="dot">.</span></h1>
+    <div class="sync-status" id="syncStatus" title="Clique para configurar sync">
+      <span class="sync-dot" id="syncDot"></span>
+      <span id="syncLabel">local</span>
+    </div>
+  </div>
+  <div class="toolbar">
+    <input type="text" id="searchBox" placeholder="Buscar...">
+    <select id="filterPrio">
+      <option value="">Toda prioridade</option>
+      <option value="urgent">Urgente</option>
+      <option value="high">Alta</option>
+      <option value="med">Média</option>
+      <option value="low">Baixa</option>
+      <option value="none">Sem prioridade</option>
+    </select>
+    <button class="btn" id="filterPending">Pendentes</button>
+    <button class="btn" id="filterAll" class="active">Tudo</button>
+    <button class="btn" id="collapseAllBtn">Recolher tudo</button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="addbar">
+  <input type="text" id="newSectionInput" placeholder="Nova seção (nível raiz)...">
+  <button class="btn primary" id="newSectionBtn">+ Adicionar</button>
+</footer>
+
+<div id="modalRoot"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- State ----------
+  let DATA = { version: 1, items: [] };
+  let filterText = "";
+  let filterPrio = "";
+  let showOnlyPending = false;
+  let collapsedIds = new Set(JSON.parse(localStorage.getItem('lists_collapsed') || '[]'));
+  let syncTimer = null;
+  let gistId = localStorage.getItem('lists_gist_id') || "";
+  let ghToken = localStorage.getItem('lists_gh_token') || "";
+  const GIST_FILENAME = "listas-data.json";
+
+  const PRIORITIES = {
+    urgent: {label:"Urgente", color:"var(--p-urgent)"},
+    high:   {label:"Alta",    color:"var(--p-high)"},
+    med:    {label:"Média",   color:"var(--p-med)"},
+    low:    {label:"Baixa",   color:"var(--p-low)"},
+  };
+
+  function uid(){ return Math.random().toString(36).slice(2,10); }
+
+  // ---------- Data helpers ----------
+  function findNode(items, id, parent=null){
+    for(const it of items){
+      if(it.id === id) return {node: it, parent, siblings: items};
+      const found = findNode(it.children, id, it);
+      if(found) return found;
+    }
+    return null;
+  }
+
+  function countProgress(item){
+    let total=0, done=0;
+    (function walk(n){
+      for(const c of n.children){
+        total++;
+        if(c.checked) done++;
+        walk(c);
+      }
+    })(item);
+    return {total, done};
+  }
+
+  function setCheckedRecursive(item, val){
+    item.checked = val;
+    for(const c of item.children) setCheckedRecursive(c, val);
+  }
+
+  function updateParentChecked(parentChain){
+    // parentChain not tracked directly; we recompute from root instead
+  }
+
+  // ---------- Persistence ----------
+  function loadLocal(){
+    const raw = localStorage.getItem('lists_data');
+    if(raw){
+      try{ DATA = JSON.parse(raw); return true; }catch(e){}
+    }
+    return false;
+  }
+  function saveLocal(){
+    localStorage.setItem('lists_data', JSON.stringify(DATA));
+  }
+
+  function saveAll(){
+    saveLocal();
+    render();
+    scheduleSync();
+  }
+
+  function scheduleSync(){
+    if(!ghToken || !gistId) { setSyncStatus('local'); return; }
+    setSyncStatus('busy');
+    clearTimeout(syncTimer);
+    syncTimer = setTimeout(pushToGist, 900);
+  }
+
+  function setSyncStatus(state, msg){
+    const dot = document.getElementById('syncDot');
+    const label = document.getElementById('syncLabel');
+    dot.className = 'sync-dot' + (state==='ok'?' ok':state==='err'?' err':state==='busy'?' busy':'');
+    if(!ghToken){ label.textContent = 'local'; return; }
+    label.textContent = msg || (state==='ok'?'sincronizado':state==='err'?'erro de sync':state==='busy'?'sincronizando...':'sync');
+  }
+
+  async function pushToGist(){
+    try{
+      const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+        method:'PATCH',
+        headers:{
+          'Authorization': `token ${ghToken}`,
+          'Accept':'application/vnd.github+json'
+        },
+        body: JSON.stringify({
+          files: { [GIST_FILENAME]: { content: JSON.stringify(DATA, null, 2) } }
+        })
+      });
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      setSyncStatus('ok');
+    }catch(e){
+      console.error(e);
+      setSyncStatus('err', 'erro ao salvar');
+    }
+  }
+
+  async function pullFromGist(){
+    setSyncStatus('busy');
+    try{
+      const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+        headers: ghToken ? {'Authorization': `token ${ghToken}`, 'Accept':'application/vnd.github+json'} : {'Accept':'application/vnd.github+json'}
+      });
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const gist = await res.json();
+      const file = gist.files[GIST_FILENAME];
+      if(!file) throw new Error('Arquivo não encontrado no gist');
+      let content = file.content;
+      if(file.truncated){
+        const raw = await fetch(file.raw_url);
+        content = await raw.text();
+      }
+      DATA = JSON.parse(content);
+      saveLocal();
+      render();
+      setSyncStatus('ok', 'carregado do gist');
+    }catch(e){
+      console.error(e);
+      setSyncStatus('err', 'erro ao carregar');
+    }
+  }
+
+  // ---------- Rendering ----------
+  const app = document.getElementById('app');
+
+  function matchesFilter(item){
+    const textOk = !filterText || item.title.toLowerCase().includes(filterText.toLowerCase());
+    const prioOk = !filterPrio || (filterPrio==='none' ? !item.priority : item.priority===filterPrio);
+    const pendingOk = !showOnlyPending || !item.checked;
+    return textOk && prioOk && pendingOk;
+  }
+
+  function subtreeMatchesFilter(item){
+    if(matchesFilter(item)) return true;
+    return item.children.some(subtreeMatchesFilter);
+  }
+
+  function render(){
+    app.innerHTML = "";
+    if(DATA.items.length === 0){
+      app.innerHTML = `<div class="empty-state"><div class="big">○</div>Nenhuma seção ainda.<br>Crie uma abaixo.</div>`;
+      return;
+    }
+    const anyFilterActive = filterText || filterPrio || showOnlyPending;
+
+    for(const section of DATA.items){
+      if(anyFilterActive && !subtreeMatchesFilter(section)) continue;
+      app.appendChild(renderSection(section));
+    }
+    if(app.children.length === 0 && anyFilterActive){
+      app.innerHTML = `<div class="empty-state"><div class="big">∅</div>Nada encontrado com esse filtro.</div>`;
+    }
+  }
+
+  function renderSection(section){
+    const wrap = document.createElement('div');
+    wrap.className = 'section';
+
+    const {total, done} = countProgress(section);
+    const pct = total ? Math.round((done/total)*100) : (section.checked ? 100 : 0);
+    const collapsed = collapsedIds.has(section.id);
+
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = `
+      <span class="collapse-arrow ${collapsed?'':'open'}">▶</span>
+      <input type="checkbox" class="checkbox" ${section.checked?'checked':''}>
+      <span class="section-title ${section.checked?'done':''}" contenteditable="false">${escapeHtml(section.title)}</span>
+      <div class="progress-wrap">
+        <span class="progress-text">${done}/${total}</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>
+      <button class="icon-btn danger" title="Excluir seção">✕</button>
+    `;
+    const arrow = header.querySelector('.collapse-arrow');
+    const chk = header.querySelector('.checkbox');
+    const titleEl = header.querySelector('.section-title');
+    const delBtn = header.querySelector('.icon-btn.danger');
+
+    header.addEventListener('click', (e)=>{
+      if(e.target===chk || e.target===titleEl || e.target===delBtn) return;
+      toggleCollapse(section.id);
+    });
+    chk.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      setCheckedRecursive(section, chk.checked);
+      saveAll();
+    });
+    delBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      if(confirm(`Excluir a seção "${section.title}" e tudo dentro dela?`)){
+        DATA.items = DATA.items.filter(s=>s.id!==section.id);
+        saveAll();
+      }
+    });
+    enableInlineEdit(titleEl, section);
+
+    wrap.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'section-body' + (collapsed?' collapsed':'');
+    body.appendChild(renderChildren(section, 0));
+    wrap.appendChild(body);
+
+    return wrap;
+  }
+
+  function toggleCollapse(id){
+    if(collapsedIds.has(id)) collapsedIds.delete(id); else collapsedIds.add(id);
+    localStorage.setItem('lists_collapsed', JSON.stringify([...collapsedIds]));
+    render();
+  }
+
+  function renderChildren(parentItem, depth){
+    const container = document.createElement('div');
+    const anyFilterActive = filterText || filterPrio || showOnlyPending;
+
+    for(const item of parentItem.children){
+      if(anyFilterActive && !subtreeMatchesFilter(item)) continue;
+      container.appendChild(renderItem(item, depth));
+    }
+
+    // add-child row
+    const addRow = document.createElement('div');
+    addRow.className = 'add-child-row';
+    addRow.style.paddingLeft = (depth*18 + 26) + 'px';
+    addRow.innerHTML = `<input type="text" class="add-child-input" placeholder="+ item...">`;
+    const input = addRow.querySelector('input');
+    input.addEventListener('keydown', (e)=>{
+      if(e.key==='Enter' && input.value.trim()){
+        const newItem = makeItem(input.value.trim());
+        parentItem.children.push(newItem);
+        input.value='';
+        saveAll();
+      }
+    });
+    container.appendChild(addRow);
+
+    return container;
+  }
+
+  function makeItem(title){
+    return {id: uid(), title, checked:false, children:[], priority:null, due:null};
+  }
+
+  function renderItem(item, depth){
+    const wrapper = document.createElement('div');
+
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    row.style.paddingLeft = (depth*18) + 'px';
+    row.draggable = true;
+    row.dataset.id = item.id;
+
+    const prioColor = item.priority ? PRIORITIES[item.priority].color : 'transparent';
+
+    const hasChildren = item.children.length > 0;
+    const itemCollapsed = collapsedIds.has(item.id);
+
+    row.innerHTML = `
+      <div class="indent" style="width:${depth>0?4:0}px"></div>
+      <span class="collapse-arrow item-arrow ${hasChildren && !itemCollapsed ? 'open' : ''}" style="${hasChildren?'':'visibility:hidden'}">▶</span>
+      <div class="prio-bar" style="background:${prioColor}"></div>
+      <input type="checkbox" class="checkbox" ${item.checked?'checked':''}>
+      <div class="item-main">
+        <div class="item-title-row">
+          <span class="item-title ${item.checked?'done':''}" contenteditable="false">${escapeHtml(item.title)}</span>
+        </div>
+        <div class="item-meta"></div>
+      </div>
+      <div class="item-actions">
+        <select class="prio-select" title="Prioridade">
+          <option value="">—</option>
+          <option value="urgent">Urgente</option>
+          <option value="high">Alta</option>
+          <option value="med">Média</option>
+          <option value="low">Baixa</option>
+        </select>
+        <button class="icon-btn" title="Data">📅</button>
+        <button class="icon-btn" title="Adicionar subitem">+</button>
+        <button class="icon-btn danger" title="Excluir">✕</button>
+      </div>
+    `;
+    const itemArrow = row.querySelector('.item-arrow');
+    if(hasChildren){
+      itemArrow.style.cursor = 'pointer';
+      itemArrow.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        toggleCollapse(item.id);
+      });
+    }
+
+    const chk = row.querySelector('.checkbox');
+    const titleEl = row.querySelector('.item-title');
+    const prioSelect = row.querySelector('.prio-select');
+    const dateBtn = row.querySelectorAll('.icon-btn')[0];
+    const addBtn = row.querySelectorAll('.icon-btn')[1];
+    const delBtn = row.querySelectorAll('.icon-btn')[2];
+    const metaEl = row.querySelector('.item-meta');
+
+    prioSelect.value = item.priority || "";
+
+    if(item.due){
+      const badge = document.createElement('span');
+      const today = new Date(); today.setHours(0,0,0,0);
+      const dueDate = new Date(item.due+'T00:00:00');
+      const diffDays = Math.round((dueDate-today)/86400000);
+      badge.className = 'due-badge' + (diffDays<0 && !item.checked ? ' overdue' : diffDays<=2 && !item.checked ? ' soon' : '');
+      badge.textContent = formatDate(item.due);
+      metaEl.appendChild(badge);
+    }
+
+    chk.addEventListener('click', ()=>{
+      setCheckedRecursive(item, chk.checked);
+      saveAll();
+    });
+    prioSelect.addEventListener('change', ()=>{
+      item.priority = prioSelect.value || null;
+      saveAll();
+    });
+    dateBtn.addEventListener('click', ()=>{
+      openDateModal(item);
+    });
+    addBtn.addEventListener('click', ()=>{
+      collapsedIds.delete(item.id);
+      const child = makeItem("");
+      item.children.push(child);
+      render();
+      const newRow = document.querySelector(`[data-id="${child.id}"] .item-title`);
+      if(newRow) startEdit(newRow, child);
+    });
+    delBtn.addEventListener('click', ()=>{
+      const ref = findNode(DATA.items, item.id);
+      if(!ref) return;
+      if(item.children.length===0 || confirm(`Excluir "${item.title}" e seus ${item.children.length} subitens?`)){
+        ref.siblings.splice(ref.siblings.indexOf(item),1);
+        saveAll();
+      }
+    });
+    enableInlineEdit(titleEl, item);
+
+    // drag and drop reorder
+    row.addEventListener('dragstart', (e)=>{
+      e.dataTransfer.setData('text/plain', item.id);
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    row.addEventListener('dragover', (e)=>{
+      e.preventDefault();
+      row.classList.add('dragover');
+    });
+    row.addEventListener('dragleave', ()=> row.classList.remove('dragover'));
+    row.addEventListener('drop', (e)=>{
+      e.preventDefault();
+      row.classList.remove('dragover');
+      const draggedId = e.dataTransfer.getData('text/plain');
+      if(draggedId === item.id) return;
+      moveItem(draggedId, item.id);
+    });
+
+    wrapper.appendChild(row);
+
+    // children (always render container so the "add subitem" input is reachable,
+    // but hide the whole block when the parent item is individually collapsed)
+    const childWrap = renderChildren(item, depth+1);
+    if(hasChildren && itemCollapsed){
+      childWrap.style.display = 'none';
+    }
+    wrapper.appendChild(childWrap);
+
+    return wrapper;
+  }
+
+  function moveItem(draggedId, targetId){
+    const draggedRef = findNode(DATA.items, draggedId);
+    const targetRef = findNode(DATA.items, targetId);
+    if(!draggedRef || !targetRef) return;
+    // prevent dropping into own descendant
+    if(isDescendant(draggedRef.node, targetId)) return;
+    draggedRef.siblings.splice(draggedRef.siblings.indexOf(draggedRef.node),1);
+    const targetIdx = targetRef.siblings.indexOf(targetRef.node);
+    targetRef.siblings.splice(targetIdx, 0, draggedRef.node);
+    saveAll();
+  }
+  function isDescendant(node, id){
+    for(const c of node.children){
+      if(c.id===id) return true;
+      if(isDescendant(c,id)) return true;
+    }
+    return false;
+  }
+
+  function enableInlineEdit(el, item){
+    el.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      startEdit(el, item);
+    });
+  }
+  function startEdit(el, item){
+    el.contentEditable = "true";
+    el.focus();
+    document.execCommand('selectAll', false, null);
+    function finish(){
+      el.contentEditable = "false";
+      const val = el.textContent.trim();
+      if(val && val !== item.title){
+        item.title = val;
+        saveAll();
+      } else if(!val){
+        el.textContent = item.title;
+      } else {
+        render();
+      }
+    }
+    el.addEventListener('blur', finish, {once:true});
+    el.addEventListener('keydown', function handler(e){
+      if(e.key==='Enter'){ e.preventDefault(); el.blur(); }
+      if(e.key==='Escape'){ el.textContent = item.title; el.blur(); }
+    });
+  }
+
+  function escapeHtml(s){
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+  function formatDate(iso){
+    const [y,m,d] = iso.split('-');
+    return `${d}/${m}`;
+  }
+
+  // ---------- Date modal ----------
+  function openDateModal(item){
+    const root = document.getElementById('modalRoot');
+    root.innerHTML = `
+      <div class="modal-overlay">
+        <div class="modal">
+          <h2>Data — ${escapeHtml(item.title)||'(item)'}</h2>
+          <input type="date" id="dateInput" value="${item.due||''}">
+          <div class="modal-actions">
+            <button class="btn" id="dateClear">Remover data</button>
+            <button class="btn" id="dateCancel">Cancelar</button>
+            <button class="btn primary" id="dateSave">Salvar</button>
+          </div>
+        </div>
+      </div>
+    `;
+    root.querySelector('#dateCancel').onclick = ()=> root.innerHTML='';
+    root.querySelector('#dateClear').onclick = ()=>{ item.due=null; root.innerHTML=''; saveAll(); };
+    root.querySelector('#dateSave').onclick = ()=>{
+      const v = root.querySelector('#dateInput').value;
+      item.due = v || null;
+      root.innerHTML='';
+      saveAll();
+    };
+  }
+
+  // ---------- Sync setup modal ----------
+  function openSyncModal(){
+    const root = document.getElementById('modalRoot');
+    root.innerHTML = `
+      <div class="modal-overlay">
+        <div class="modal">
+          <h2>Sincronização (GitHub Gist)</h2>
+          <p>Crie um <a href="https://github.com/settings/tokens/new?scopes=gist&description=Listas%20App" target="_blank">token pessoal</a> com escopo <code>gist</code> apenas. Cole abaixo. Ele fica salvo só no seu navegador (localStorage).</p>
+          <input type="text" id="tokenInput" placeholder="Personal Access Token (ghp_...)" value="${ghToken}">
+          <p style="margin-top:-4px;">ID do Gist (deixe em branco para criar um novo):</p>
+          <input type="text" id="gistInput" placeholder="gist id (opcional)" value="${gistId}">
+          <div class="modal-actions">
+            <button class="btn" id="syncCancel">Cancelar</button>
+            <button class="btn" id="syncDisconnect">Desconectar</button>
+            <button class="btn primary" id="syncSave">Salvar e sincronizar</button>
+          </div>
+        </div>
+      </div>
+    `;
+    root.querySelector('#syncCancel').onclick = ()=> root.innerHTML='';
+    root.querySelector('#syncDisconnect').onclick = ()=>{
+      ghToken=""; gistId="";
+      localStorage.removeItem('lists_gh_token');
+      localStorage.removeItem('lists_gist_id');
+      setSyncStatus('local');
+      root.innerHTML='';
+    };
+    root.querySelector('#syncSave').onclick = async ()=>{
+      const token = root.querySelector('#tokenInput').value.trim();
+      let gid = root.querySelector('#gistInput').value.trim();
+      if(!token){ alert('Cole um token válido.'); return; }
+      ghToken = token;
+      localStorage.setItem('lists_gh_token', ghToken);
+
+      if(!gid){
+        // create new gist
+        setSyncStatus('busy');
+        try{
+          const res = await fetch('https://api.github.com/gists', {
+            method:'POST',
+            headers:{'Authorization':`token ${ghToken}`,'Accept':'application/vnd.github+json'},
+            body: JSON.stringify({
+              description:'Listas App - dados',
+              public:false,
+              files:{[GIST_FILENAME]:{content: JSON.stringify(DATA,null,2)}}
+            })
+          });
+          if(!res.ok) throw new Error('HTTP '+res.status);
+          const gist = await res.json();
+          gid = gist.id;
+        }catch(e){
+          console.error(e);
+          alert('Erro ao criar gist. Verifique o token.');
+          setSyncStatus('err');
+          return;
+        }
+      }
+      gistId = gid;
+      localStorage.setItem('lists_gist_id', gistId);
+      root.innerHTML='';
+      await pullFromGist();
+    };
+  }
+
+  document.getElementById('syncStatus').addEventListener('click', openSyncModal);
+
+  // ---------- Toolbar events ----------
+  document.getElementById('searchBox').addEventListener('input', (e)=>{
+    filterText = e.target.value;
+    render();
+  });
+  document.getElementById('filterPrio').addEventListener('change', (e)=>{
+    filterPrio = e.target.value;
+    render();
+  });
+  const pendingBtn = document.getElementById('filterPending');
+  const allBtn = document.getElementById('filterAll');
+  pendingBtn.addEventListener('click', ()=>{
+    showOnlyPending = true;
+    pendingBtn.classList.add('active');
+    allBtn.classList.remove('active');
+    render();
+  });
+  allBtn.addEventListener('click', ()=>{
+    showOnlyPending = false;
+    allBtn.classList.add('active');
+    pendingBtn.classList.remove('active');
+    render();
+  });
+  allBtn.classList.add('active');
+
+  document.getElementById('collapseAllBtn').addEventListener('click', ()=>{
+    function collectIds(items){
+      for(const it of items){
+        if(it.children.length>0){ collapsedIds.add(it.id); collectIds(it.children); }
+      }
+    }
+    if(collapsedIds.size>0){
+      collapsedIds.clear();
+    } else {
+      collectIds(DATA.items);
+    }
+    localStorage.setItem('lists_collapsed', JSON.stringify([...collapsedIds]));
+    render();
+  });
+
+  document.getElementById('newSectionBtn').addEventListener('click', addSection);
+  document.getElementById('newSectionInput').addEventListener('keydown', (e)=>{
+    if(e.key==='Enter') addSection();
+  });
+  function addSection(){
+    const input = document.getElementById('newSectionInput');
+    const val = input.value.trim();
+    if(!val) return;
+    DATA.items.push({id:uid(), title:val, checked:false, children:[], priority:null, due:null});
+    input.value='';
+    saveAll();
+  }
+
+  // ---------- Init ----------
+  async function init(){
+    const hasLocal = loadLocal();
+    if(!hasLocal){
+      try{
+        const res = await fetch('./data.json');
+        if(res.ok){
+          DATA = await res.json();
+          saveLocal();
+        }
+      }catch(e){ /* no seed file, start empty */ }
+    }
+    if(ghToken && gistId){
+      render();
+      await pullFromGist();
+    } else {
+      setSyncStatus('local');
+      render();
+    }
+  }
+  init();
+
+})();
+</script>
+</body>
+</html>
