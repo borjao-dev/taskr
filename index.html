@@ -121,7 +121,20 @@
     position:relative;
   }
   .item-row:hover{background:var(--bg-hover);}
-  .item-row.dragover{outline:1px dashed var(--accent);}
+  .item-row.dragover-inside{outline:2px solid var(--accent); outline-offset:-2px; background:var(--bg-hover);}
+  .item-row.dragover-before{box-shadow: inset 0 2px 0 0 var(--accent);}
+  .item-row.dragover-after{box-shadow: inset 0 -2px 0 0 var(--accent);}
+  .item-row.dragging{opacity:0.4;}
+
+  .drag-handle{
+    flex-shrink:0; width:12px; text-align:center;
+    color:var(--text-faint); cursor:grab;
+    opacity:0; transition:opacity 0.1s;
+    margin-top:2px; user-select:none; letter-spacing:-2px;
+  }
+  .item-row:hover .drag-handle{opacity:0.6;}
+  .drag-handle:hover{opacity:1 !important; color:var(--accent);}
+  .drag-handle:active{cursor:grabbing;}
 
   .indent{flex-shrink:0;}
 
@@ -165,11 +178,17 @@
     font-family:var(--mono); font-size:10px; padding:2px 4px; border-radius:3px; cursor:pointer;
   }
 
-  .add-child-row{padding:4px 6px 4px 4px;}
+  .add-child-row{padding:3px 6px 3px 4px;}
+  .add-child-btn{
+    background:none; border:none; color:var(--text-faint);
+    font-family:var(--mono); font-size:12px; padding:3px 6px; border-radius:4px;
+    cursor:pointer; opacity:0.7;
+  }
+  .add-child-btn:hover{opacity:1; color:var(--accent); background:var(--bg-hover);}
   .add-child-input{
     background:none; border:1px dashed var(--border); color:var(--text-dim);
     font-family:var(--mono); font-size:12.5px; padding:5px 8px; border-radius:4px;
-    width:100%; outline:none;
+    width:100%; max-width:340px; outline:none;
   }
   .add-child-input:focus{border-color:var(--accent); border-style:solid; color:var(--text);}
   .add-child-input::placeholder{color:var(--text-faint);}
@@ -201,7 +220,11 @@
   .modal code{background:var(--bg); padding:1px 5px; border-radius:3px; font-size:11.5px;}
   .modal a{font-size:12.5px;}
 
-  ::-webkit-scrollbar{width:8px; height:8px;}
+  .sort-hint{
+    font-size:11px; color:var(--text-faint); padding:4px 16px 0;
+    display:none;
+  }
+  .sort-hint.visible{display:block;}
   ::-webkit-scrollbar-thumb{background:var(--border); border-radius:4px;}
 
   @media (max-width:480px){
@@ -230,11 +253,21 @@
       <option value="low">Baixa</option>
       <option value="none">Sem prioridade</option>
     </select>
+    <select id="sortSelect" title="Ordenar por">
+      <option value="default">Padrão (prioridade → data → nome)</option>
+      <option value="manual">Ordem manual</option>
+      <option value="name-asc">Nome (A→Z)</option>
+      <option value="name-desc">Nome (Z→A)</option>
+      <option value="priority">Prioridade (maior primeiro)</option>
+      <option value="due">Data (mais próxima primeiro)</option>
+      <option value="status">Pendentes primeiro</option>
+    </select>
     <button class="btn" id="filterPending">Pendentes</button>
     <button class="btn" id="filterAll" class="active">Tudo</button>
     <button class="btn" id="collapseAllBtn">Recolher tudo</button>
   </div>
 </header>
+<div class="sort-hint" id="sortHint">Ordenação automática ativa — arrastar para reordenar está desligado. Volte para "Ordem manual" para reorganizar à mão.</div>
 
 <main id="app"></main>
 
@@ -254,6 +287,7 @@
   let filterText = "";
   let filterPrio = "";
   let showOnlyPending = false;
+  let sortMode = localStorage.getItem('lists_sort') || 'default';
   let collapsedIds = new Set(JSON.parse(localStorage.getItem('lists_collapsed') || '[]'));
   let syncTimer = null;
   let gistId = localStorage.getItem('lists_gist_id') || "";
@@ -261,11 +295,55 @@
   const GIST_FILENAME = "listas-data.json";
 
   const PRIORITIES = {
-    urgent: {label:"Urgente", color:"var(--p-urgent)"},
-    high:   {label:"Alta",    color:"var(--p-high)"},
-    med:    {label:"Média",   color:"var(--p-med)"},
-    low:    {label:"Baixa",   color:"var(--p-low)"},
+    urgent: {label:"Urgente", color:"var(--p-urgent)", rank:4},
+    high:   {label:"Alta",    color:"var(--p-high)", rank:3},
+    med:    {label:"Média",   color:"var(--p-med)", rank:2},
+    low:    {label:"Baixa",   color:"var(--p-low)", rank:1},
   };
+
+  function sortItems(items){
+    if(sortMode === 'manual') return items;
+    const arr = items.slice(); // never mutate the real order
+    switch(sortMode){
+      case 'name-asc':
+        arr.sort((a,b)=> a.title.localeCompare(b.title, 'pt-BR', {sensitivity:'base'}));
+        break;
+      case 'name-desc':
+        arr.sort((a,b)=> b.title.localeCompare(a.title, 'pt-BR', {sensitivity:'base'}));
+        break;
+      case 'priority':
+        arr.sort((a,b)=> (PRIORITIES[b.priority]?.rank||0) - (PRIORITIES[a.priority]?.rank||0));
+        break;
+      case 'due':
+        arr.sort((a,b)=>{
+          if(!a.due && !b.due) return 0;
+          if(!a.due) return 1;
+          if(!b.due) return -1;
+          return a.due.localeCompare(b.due);
+        });
+        break;
+      case 'status':
+        arr.sort((a,b)=> (a.checked?1:0) - (b.checked?1:0));
+        break;
+      case 'default':
+        arr.sort((a,b)=>{
+          const prioDiff = (PRIORITIES[b.priority]?.rank||0) - (PRIORITIES[a.priority]?.rank||0);
+          if(prioDiff !== 0) return prioDiff;
+          if(a.due || b.due){
+            if(!a.due && !b.due) { /* fall through to name */ }
+            else if(!a.due) return 1;
+            else if(!b.due) return -1;
+            else {
+              const dueDiff = a.due.localeCompare(b.due);
+              if(dueDiff !== 0) return dueDiff;
+            }
+          }
+          return a.title.localeCompare(b.title, 'pt-BR', {sensitivity:'base'});
+        });
+        break;
+    }
+    return arr;
+  }
 
   function uid(){ return Math.random().toString(36).slice(2,10); }
 
@@ -401,7 +479,7 @@
     }
     const anyFilterActive = filterText || filterPrio || showOnlyPending;
 
-    for(const section of DATA.items){
+    for(const section of sortItems(DATA.items)){
       if(anyFilterActive && !subtreeMatchesFilter(section)) continue;
       app.appendChild(renderSection(section));
     }
@@ -473,25 +551,57 @@
     const container = document.createElement('div');
     const anyFilterActive = filterText || filterPrio || showOnlyPending;
 
-    for(const item of parentItem.children){
+    for(const item of sortItems(parentItem.children)){
       if(anyFilterActive && !subtreeMatchesFilter(item)) continue;
       container.appendChild(renderItem(item, depth));
     }
 
-    // add-child row
+    // add-child affordance: compact button that turns into an input on click
     const addRow = document.createElement('div');
     addRow.className = 'add-child-row';
     addRow.style.paddingLeft = (depth*18 + 26) + 'px';
-    addRow.innerHTML = `<input type="text" class="add-child-input" placeholder="+ item...">`;
-    const input = addRow.querySelector('input');
-    input.addEventListener('keydown', (e)=>{
-      if(e.key==='Enter' && input.value.trim()){
-        const newItem = makeItem(input.value.trim());
-        parentItem.children.push(newItem);
-        input.value='';
-        saveAll();
+
+    const addBtn = document.createElement('button');
+    addBtn.className = 'add-child-btn';
+    addBtn.textContent = '+ item';
+    addRow.appendChild(addBtn);
+
+    addBtn.addEventListener('click', ()=>{
+      addRow.innerHTML = '';
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'add-child-input';
+      input.placeholder = 'Nome do item...';
+      addRow.appendChild(input);
+      input.focus();
+
+      let committed = false;
+      function commit(){
+        if(committed) return;
+        const val = input.value.trim();
+        if(val){
+          committed = true;
+          const newItem = makeItem(val);
+          parentItem.children.push(newItem);
+          saveAll();
+        } else {
+          restoreButton();
+        }
       }
+      function restoreButton(){
+        addRow.innerHTML = '';
+        addRow.appendChild(addBtn);
+      }
+      input.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter'){ commit(); }
+        if(e.key==='Escape'){ committed = true; restoreButton(); }
+      });
+      input.addEventListener('blur', ()=>{
+        // small delay so Enter's commit (which re-renders) isn't double-fired by blur
+        setTimeout(()=>{ if(!committed) commit(); }, 0);
+      });
     });
+
     container.appendChild(addRow);
 
     return container;
@@ -507,7 +617,7 @@
     const row = document.createElement('div');
     row.className = 'item-row';
     row.style.paddingLeft = (depth*18) + 'px';
-    row.draggable = true;
+    row.draggable = sortMode === 'manual';
     row.dataset.id = item.id;
 
     const prioColor = item.priority ? PRIORITIES[item.priority].color : 'transparent';
@@ -516,6 +626,7 @@
     const itemCollapsed = collapsedIds.has(item.id);
 
     row.innerHTML = `
+      <span class="drag-handle" title="Arrastar para reordenar" style="${sortMode==='manual'?'':'visibility:hidden'}">⠿</span>
       <div class="indent" style="width:${depth>0?4:0}px"></div>
       <span class="collapse-arrow item-arrow ${hasChildren && !itemCollapsed ? 'open' : ''}" style="${hasChildren?'':'visibility:hidden'}">▶</span>
       <div class="prio-bar" style="background:${prioColor}"></div>
@@ -597,22 +708,39 @@
     });
     enableInlineEdit(titleEl, item);
 
-    // drag and drop reorder
+    // drag and drop reorder — only initiates from the drag handle.
+    // Drop zone within the row: top third = before (sibling), bottom third = after (sibling),
+    // middle third = inside (becomes a child of this item).
+    const dragHandle = row.querySelector('.drag-handle');
+    let dragAllowed = false;
+    dragHandle.addEventListener('mousedown', ()=>{ dragAllowed = true; });
+    row.addEventListener('mouseup', ()=>{ dragAllowed = false; });
     row.addEventListener('dragstart', (e)=>{
+      if(!dragAllowed){ e.preventDefault(); return; }
       e.dataTransfer.setData('text/plain', item.id);
       e.dataTransfer.effectAllowed = 'move';
+      row.classList.add('dragging');
+    });
+    row.addEventListener('dragend', ()=>{
+      dragAllowed = false;
+      row.classList.remove('dragging');
     });
     row.addEventListener('dragover', (e)=>{
       e.preventDefault();
-      row.classList.add('dragover');
+      const zone = dropZoneFor(e, row);
+      row.classList.remove('dragover-before','dragover-after','dragover-inside');
+      row.classList.add('dragover-'+zone);
     });
-    row.addEventListener('dragleave', ()=> row.classList.remove('dragover'));
+    row.addEventListener('dragleave', ()=>{
+      row.classList.remove('dragover-before','dragover-after','dragover-inside');
+    });
     row.addEventListener('drop', (e)=>{
       e.preventDefault();
-      row.classList.remove('dragover');
+      const zone = dropZoneFor(e, row);
+      row.classList.remove('dragover-before','dragover-after','dragover-inside');
       const draggedId = e.dataTransfer.getData('text/plain');
       if(draggedId === item.id) return;
-      moveItem(draggedId, item.id);
+      moveItem(draggedId, item.id, zone);
     });
 
     wrapper.appendChild(row);
@@ -628,15 +756,36 @@
     return wrapper;
   }
 
-  function moveItem(draggedId, targetId){
+  function dropZoneFor(e, row){
+    const rect = row.getBoundingClientRect();
+    const relY = (e.clientY - rect.top) / rect.height;
+    if(relY < 0.28) return 'before';
+    if(relY > 0.72) return 'after';
+    return 'inside';
+  }
+
+  function moveItem(draggedId, targetId, zone){
     const draggedRef = findNode(DATA.items, draggedId);
     const targetRef = findNode(DATA.items, targetId);
     if(!draggedRef || !targetRef) return;
-    // prevent dropping into own descendant
-    if(isDescendant(draggedRef.node, targetId)) return;
-    draggedRef.siblings.splice(draggedRef.siblings.indexOf(draggedRef.node),1);
-    const targetIdx = targetRef.siblings.indexOf(targetRef.node);
-    targetRef.siblings.splice(targetIdx, 0, draggedRef.node);
+    // prevent dropping into or next to its own descendant (would create a cycle)
+    if(draggedId === targetId || isDescendant(draggedRef.node, targetId)) return;
+
+    // remove from current position first
+    draggedRef.siblings.splice(draggedRef.siblings.indexOf(draggedRef.node), 1);
+
+    if(zone === 'inside'){
+      targetRef.node.children.push(draggedRef.node);
+      collapsedIds.delete(targetId); // expand so the user sees where it landed
+      localStorage.setItem('lists_collapsed', JSON.stringify([...collapsedIds]));
+    } else {
+      // targetRef.siblings may be stale if target and dragged shared the same array
+      // and dragged was removed from earlier in it — recompute fresh.
+      const freshTarget = findNode(DATA.items, targetId);
+      const idx = freshTarget.siblings.indexOf(freshTarget.node);
+      const insertAt = zone === 'before' ? idx : idx + 1;
+      freshTarget.siblings.splice(insertAt, 0, draggedRef.node);
+    }
     saveAll();
   }
   function isDescendant(node, id){
@@ -787,6 +936,19 @@
     filterPrio = e.target.value;
     render();
   });
+  const sortSelect = document.getElementById('sortSelect');
+  const sortHint = document.getElementById('sortHint');
+  sortSelect.value = sortMode;
+  updateSortHint();
+  sortSelect.addEventListener('change', (e)=>{
+    sortMode = e.target.value;
+    localStorage.setItem('lists_sort', sortMode);
+    updateSortHint();
+    render();
+  });
+  function updateSortHint(){
+    sortHint.classList.toggle('visible', sortMode !== 'manual');
+  }
   const pendingBtn = document.getElementById('filterPending');
   const allBtn = document.getElementById('filterAll');
   pendingBtn.addEventListener('click', ()=>{
