@@ -532,8 +532,12 @@
     // alvo de drop: soltar qualquer item no cabeçalho da seção sempre o torna
     // um filho de primeiro nível dessa seção (sem zonas de antes/depois aqui —
     // um cabeçalho não é uma linha irmã, então "dentro" é a única ação que faz sentido)
+    header.addEventListener('dragenter', (e)=>{
+      e.preventDefault();
+    });
     header.addEventListener('dragover', (e)=>{
       e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
       header.classList.add('dragover-inside');
     });
     header.addEventListener('dragleave', ()=>{
@@ -693,8 +697,12 @@
       dragAllowed = false;
       row.classList.remove('dragging');
     });
+    row.addEventListener('dragenter', (e)=>{
+      e.preventDefault();
+    });
     row.addEventListener('dragover', (e)=>{
       e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
       const zone = dropZoneFor(e, row);
       row.classList.remove('dragover-before','dragover-after','dragover-inside');
       row.classList.add('dragover-'+zone);
