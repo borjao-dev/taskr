@@ -364,10 +364,6 @@
     for(const c of item.children) setCheckedRecursive(c, val);
   }
 
-  function updateParentChecked(parentChain){
-    // parentChain not tracked directly; we recompute from root instead
-  }
-
   // ---------- Persistence ----------
   function loadLocal(){
     const raw = localStorage.getItem('lists_data');
@@ -497,15 +493,14 @@
         <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
       </div>
       <div class="section-actions">
-        <button class="icon-btn" title="Adicionar item">+</button>
-        <button class="icon-btn danger" title="Excluir seção">✕</button>
+        <button class="icon-btn add-btn" title="Adicionar item">+</button>
+        <button class="icon-btn danger del-btn" title="Excluir seção">✕</button>
       </div>
     `;
-    const arrow = header.querySelector('.collapse-arrow');
     const chk = header.querySelector('.checkbox');
     const titleEl = header.querySelector('.section-title');
-    const sectionAddBtn = header.querySelector('.icon-btn:not(.danger)');
-    const delBtn = header.querySelector('.icon-btn.danger');
+    const sectionAddBtn = header.querySelector('.add-btn');
+    const delBtn = header.querySelector('.del-btn');
 
     header.addEventListener('click', (e)=>{
       if(e.target===chk || e.target===titleEl || e.target===delBtn || e.target===sectionAddBtn) return;
@@ -572,7 +567,7 @@
     const row = document.createElement('div');
     row.className = 'item-row';
     row.style.paddingLeft = (depth*18) + 'px';
-    row.draggable = sortMode === 'manual';
+    row.draggable = true;
     row.dataset.id = item.id;
 
     const prioColor = item.priority ? PRIORITIES[item.priority].color : 'transparent';
@@ -581,7 +576,7 @@
     const itemCollapsed = collapsedIds.has(item.id);
 
     row.innerHTML = `
-      <span class="drag-handle" title="Arrastar para reordenar" style="${sortMode==='manual'?'':'visibility:hidden'}">⠿</span>
+      <span class="drag-handle" title="${sortMode==='manual' ? 'Arrastar para reordenar ou mudar de hierarquia' : 'Arrastar para mudar de hierarquia'}">⠿</span>
       <div class="indent" style="width:${depth>0?4:0}px"></div>
       <span class="collapse-arrow item-arrow ${hasChildren && !itemCollapsed ? 'open' : ''}" style="${hasChildren?'':'visibility:hidden'}">▶</span>
       <div class="prio-bar" style="background:${prioColor}"></div>
@@ -600,9 +595,9 @@
           <option value="med">Média</option>
           <option value="low">Baixa</option>
         </select>
-        <button class="icon-btn" title="Data">📅</button>
-        <button class="icon-btn" title="Adicionar subitem">+</button>
-        <button class="icon-btn danger" title="Excluir">✕</button>
+        <button class="icon-btn date-btn" title="Data">📅</button>
+        <button class="icon-btn add-btn" title="Adicionar subitem">+</button>
+        <button class="icon-btn danger del-btn" title="Excluir">✕</button>
       </div>
     `;
     const itemArrow = row.querySelector('.item-arrow');
@@ -617,9 +612,9 @@
     const chk = row.querySelector('.checkbox');
     const titleEl = row.querySelector('.item-title');
     const prioSelect = row.querySelector('.prio-select');
-    const dateBtn = row.querySelectorAll('.icon-btn')[0];
-    const addBtn = row.querySelectorAll('.icon-btn')[1];
-    const delBtn = row.querySelectorAll('.icon-btn')[2];
+    const dateBtn = row.querySelector('.date-btn');
+    const addBtn = row.querySelector('.add-btn');
+    const delBtn = row.querySelector('.del-btn');
     const metaEl = row.querySelector('.item-meta');
 
     prioSelect.value = item.priority || "";
@@ -712,6 +707,8 @@
   }
 
   function dropZoneFor(e, row){
+    if(sortMode !== 'manual') return 'inside'; // reordering siblings doesn't apply under auto-sort;
+                                                // only re-parenting (drop inside) is allowed
     const rect = row.getBoundingClientRect();
     const relY = (e.clientY - rect.top) / rect.height;
     if(relY < 0.28) return 'before';
@@ -726,20 +723,23 @@
     // prevent dropping into or next to its own descendant (would create a cycle)
     if(draggedId === targetId || isDescendant(draggedRef.node, targetId)) return;
 
-    // remove from current position first
-    draggedRef.siblings.splice(draggedRef.siblings.indexOf(draggedRef.node), 1);
+    const draggedIdx = draggedRef.siblings.indexOf(draggedRef.node);
 
     if(zone === 'inside'){
+      draggedRef.siblings.splice(draggedIdx, 1);
       targetRef.node.children.push(draggedRef.node);
       collapsedIds.delete(targetId); // expand so the user sees where it landed
       localStorage.setItem('lists_collapsed', JSON.stringify([...collapsedIds]));
     } else {
-      // targetRef.siblings may be stale if target and dragged shared the same array
-      // and dragged was removed from earlier in it — recompute fresh.
-      const freshTarget = findNode(DATA.items, targetId);
-      const idx = freshTarget.siblings.indexOf(freshTarget.node);
-      const insertAt = zone === 'before' ? idx : idx + 1;
-      freshTarget.siblings.splice(insertAt, 0, draggedRef.node);
+      let targetIdx = targetRef.siblings.indexOf(targetRef.node);
+      // if dragged and target are siblings and dragged sits before target in the
+      // same array, removing it first shifts target's index left by one
+      if(targetRef.siblings === draggedRef.siblings && draggedIdx < targetIdx){
+        targetIdx -= 1;
+      }
+      draggedRef.siblings.splice(draggedIdx, 1);
+      const insertAt = zone === 'before' ? targetIdx : targetIdx + 1;
+      targetRef.siblings.splice(insertAt, 0, draggedRef.node);
     }
     saveAll();
   }
