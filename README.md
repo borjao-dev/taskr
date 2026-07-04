@@ -49,7 +49,7 @@ token em `github.com/settings/tokens` e crie outro.
 
 **Limitação:** como não há backend real, se dois dispositivos editarem ao
 mesmo tempo sem sincronizar entre si, o último a salvar sobrescreve o Gist
-inteiro (last-write-wins). Para o seu uso (um usuário, poucos dispositivos)
+inteiro (padrão "last-write-wins": a última escrita sobrescreve a anterior). Para o seu uso (um usuário, poucos dispositivos)
 isso raramente é problema — só evite editar em dois lugares simultaneamente.
 
 ## Funcionalidades

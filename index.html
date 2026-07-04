@@ -126,7 +126,7 @@
     position:relative;
   }
   .item-row:hover{background:var(--bg-hover);}
-  .item-row.dragover-inside{outline:2px solid var(--accent); outline-offset:-2px; background:var(--bg-hover);}
+  .item-row.dragover-inside, .section-header.dragover-inside{outline:2px solid var(--accent); outline-offset:-2px; background:var(--bg-hover);}
   .item-row.dragover-before{box-shadow: inset 0 2px 0 0 var(--accent);}
   .item-row.dragover-after{box-shadow: inset 0 -2px 0 0 var(--accent);}
   .item-row.dragging{opacity:0.4;}
@@ -272,7 +272,7 @@
 (function(){
   "use strict";
 
-  // ---------- State ----------
+  // ---------- Estado ----------
   let DATA = { version: 1, items: [] };
   let filterText = "";
   let filterPrio = "";
@@ -293,7 +293,7 @@
 
   function sortItems(items){
     if(sortMode === 'manual') return items;
-    const arr = items.slice(); // never mutate the real order
+    const arr = items.slice(); // nunca modifica a ordem real dos dados
     switch(sortMode){
       case 'name-asc':
         arr.sort((a,b)=> a.title.localeCompare(b.title, 'pt-BR', {sensitivity:'base'}));
@@ -320,7 +320,7 @@
           const prioDiff = (PRIORITIES[b.priority]?.rank||0) - (PRIORITIES[a.priority]?.rank||0);
           if(prioDiff !== 0) return prioDiff;
           if(a.due || b.due){
-            if(!a.due && !b.due) { /* fall through to name */ }
+            if(!a.due && !b.due) { /* segue para desempate por nome */ }
             else if(!a.due) return 1;
             else if(!b.due) return -1;
             else {
@@ -337,7 +337,7 @@
 
   function uid(){ return Math.random().toString(36).slice(2,10); }
 
-  // ---------- Data helpers ----------
+  // ---------- Funções auxiliares de dados ----------
   function findNode(items, id, parent=null){
     for(const it of items){
       if(it.id === id) return {node: it, parent, siblings: items};
@@ -364,7 +364,7 @@
     for(const c of item.children) setCheckedRecursive(c, val);
   }
 
-  // ---------- Persistence ----------
+  // ---------- Persistência ----------
   function loadLocal(){
     const raw = localStorage.getItem('lists_data');
     if(raw){
@@ -442,7 +442,7 @@
     }
   }
 
-  // ---------- Rendering ----------
+  // ---------- Renderização ----------
   const app = document.getElementById('app');
 
   function matchesFilter(item){
@@ -528,6 +528,24 @@
       }
     });
     enableInlineEdit(titleEl, section);
+
+    // alvo de drop: soltar qualquer item no cabeçalho da seção sempre o torna
+    // um filho de primeiro nível dessa seção (sem zonas de antes/depois aqui —
+    // um cabeçalho não é uma linha irmã, então "dentro" é a única ação que faz sentido)
+    header.addEventListener('dragover', (e)=>{
+      e.preventDefault();
+      header.classList.add('dragover-inside');
+    });
+    header.addEventListener('dragleave', ()=>{
+      header.classList.remove('dragover-inside');
+    });
+    header.addEventListener('drop', (e)=>{
+      e.preventDefault();
+      header.classList.remove('dragover-inside');
+      const draggedId = e.dataTransfer.getData('text/plain');
+      if(!draggedId) return;
+      moveItemIntoSection(draggedId, section);
+    });
 
     wrap.appendChild(header);
 
@@ -658,9 +676,9 @@
     });
     enableInlineEdit(titleEl, item);
 
-    // drag and drop reorder — only initiates from the drag handle.
-    // Drop zone within the row: top third = before (sibling), bottom third = after (sibling),
-    // middle third = inside (becomes a child of this item).
+    // reordenar por arrastar-e-soltar — só inicia a partir da alça de arraste.
+    // Zona de soltura dentro da linha: terço de cima = antes (irmão), terço de baixo = depois (irmão),
+    // terço do meio = dentro (vira filho deste item).
     const dragHandle = row.querySelector('.drag-handle');
     let dragAllowed = false;
     dragHandle.addEventListener('mousedown', ()=>{ dragAllowed = true; });
@@ -695,8 +713,8 @@
 
     wrapper.appendChild(row);
 
-    // children (always render container so the "add subitem" input is reachable,
-    // but hide the whole block when the parent item is individually collapsed)
+    // filhos (sempre renderiza o container para o campo de "adicionar subitem" ficar acessível,
+    // mas esconde o bloco inteiro quando o item pai está individualmente recolhido)
     const childWrap = renderChildren(item, depth+1);
     if(hasChildren && itemCollapsed){
       childWrap.style.display = 'none';
@@ -707,8 +725,8 @@
   }
 
   function dropZoneFor(e, row){
-    if(sortMode !== 'manual') return 'inside'; // reordering siblings doesn't apply under auto-sort;
-                                                // only re-parenting (drop inside) is allowed
+    if(sortMode !== 'manual') return 'inside'; // reordenar irmãos não se aplica com ordenação automática;
+                                                // só reparentar (soltar "dentro") é permitido
     const rect = row.getBoundingClientRect();
     const relY = (e.clientY - rect.top) / rect.height;
     if(relY < 0.28) return 'before';
@@ -716,11 +734,24 @@
     return 'inside';
   }
 
+  function moveItemIntoSection(draggedId, section){
+    const draggedRef = findNode(DATA.items, draggedId);
+    if(!draggedRef) return;
+    if(draggedId === section.id || isDescendant(draggedRef.node, section.id)) return;
+    if(draggedRef.siblings === section.children) return; // já é filho de primeiro nível aqui
+
+    draggedRef.siblings.splice(draggedRef.siblings.indexOf(draggedRef.node), 1);
+    section.children.push(draggedRef.node);
+    collapsedIds.delete(section.id); // expande para o usuário ver onde caiu
+    localStorage.setItem('lists_collapsed', JSON.stringify([...collapsedIds]));
+    saveAll();
+  }
+
   function moveItem(draggedId, targetId, zone){
     const draggedRef = findNode(DATA.items, draggedId);
     const targetRef = findNode(DATA.items, targetId);
     if(!draggedRef || !targetRef) return;
-    // prevent dropping into or next to its own descendant (would create a cycle)
+    // impede soltar dentro de ou ao lado de seu próprio descendente (criaria um ciclo)
     if(draggedId === targetId || isDescendant(draggedRef.node, targetId)) return;
 
     const draggedIdx = draggedRef.siblings.indexOf(draggedRef.node);
@@ -728,12 +759,12 @@
     if(zone === 'inside'){
       draggedRef.siblings.splice(draggedIdx, 1);
       targetRef.node.children.push(draggedRef.node);
-      collapsedIds.delete(targetId); // expand so the user sees where it landed
+      collapsedIds.delete(targetId); // expande para o usuário ver onde caiu
       localStorage.setItem('lists_collapsed', JSON.stringify([...collapsedIds]));
     } else {
       let targetIdx = targetRef.siblings.indexOf(targetRef.node);
-      // if dragged and target are siblings and dragged sits before target in the
-      // same array, removing it first shifts target's index left by one
+      // se o item arrastado e o alvo são irmãos e o arrastado está antes do alvo no
+      // mesmo array, removê-lo primeiro desloca o índice do alvo uma posição para a esquerda
       if(targetRef.siblings === draggedRef.siblings && draggedIdx < targetIdx){
         targetIdx -= 1;
       }
@@ -790,7 +821,7 @@
     return `${d}/${m}`;
   }
 
-  // ---------- Date modal ----------
+  // ---------- Modal de data ----------
   function openDateModal(item){
     const root = document.getElementById('modalRoot');
     root.innerHTML = `
@@ -816,7 +847,7 @@
     };
   }
 
-  // ---------- Sync setup modal ----------
+  // ---------- Modal de configuração de sincronização ----------
   function openSyncModal(){
     const root = document.getElementById('modalRoot');
     root.innerHTML = `
@@ -824,9 +855,9 @@
         <div class="modal">
           <h2>Sincronização (GitHub Gist)</h2>
           <p>Crie um <a href="https://github.com/settings/tokens/new?scopes=gist&description=Listas%20App" target="_blank">token pessoal</a> com escopo <code>gist</code> apenas. Cole abaixo. Ele fica salvo só no seu navegador (localStorage).</p>
-          <input type="text" id="tokenInput" placeholder="Personal Access Token (ghp_...)" value="${ghToken}">
+          <input type="text" id="tokenInput" placeholder="Personal Access Token (ghp_...)" value="${escapeHtml(ghToken)}">
           <p style="margin-top:-4px;">ID do Gist (deixe em branco para criar um novo):</p>
-          <input type="text" id="gistInput" placeholder="gist id (opcional)" value="${gistId}">
+          <input type="text" id="gistInput" placeholder="gist id (opcional)" value="${escapeHtml(gistId)}">
           <div class="modal-actions">
             <button class="btn" id="syncCancel">Cancelar</button>
             <button class="btn" id="syncDisconnect">Desconectar</button>
@@ -851,7 +882,7 @@
       localStorage.setItem('lists_gh_token', ghToken);
 
       if(!gid){
-        // create new gist
+        // cria um gist novo
         setSyncStatus('busy');
         try{
           const res = await fetch('https://api.github.com/gists', {
@@ -882,7 +913,7 @@
 
   document.getElementById('syncStatus').addEventListener('click', openSyncModal);
 
-  // ---------- Toolbar events ----------
+  // ---------- Eventos da barra de ferramentas ----------
   document.getElementById('searchBox').addEventListener('input', (e)=>{
     filterText = e.target.value;
     render();
@@ -948,7 +979,7 @@
     saveAll();
   }
 
-  // ---------- Init ----------
+  // ---------- Inicialização ----------
   async function init(){
     const hasLocal = loadLocal();
     if(!hasLocal){
@@ -958,7 +989,7 @@
           DATA = await res.json();
           saveLocal();
         }
-      }catch(e){ /* no seed file, start empty */ }
+      }catch(e){ /* sem arquivo de carga inicial, começa vazio */ }
     }
     if(ghToken && gistId){
       render();
